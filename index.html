@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farewell Party // 410 Gone</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app" class="container">
+      
+      <!-- Login Screen -->
+      <div id="login-screen" class="terminal-window">
+        <h1 class="glitch" data-text="ACCESS RESTRICTED">ACCESS RESTRICTED</h1>
+        <p>> System detected unauthorized access attempt.</p>
+        <p>> Please identify yourself.</p>
+        
+        <div class="input-line">
+          <span class="prompt">user@party:~$</span>
+          <input type="text" id="access-code" placeholder="Enter override code..." autocomplete="off" autofocus>
+        </div>
+        <div id="login-error" class="error-msg"></div>
+        <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">Hint: Try `git push --force`</p>
+      </div>
+
+      <!-- Invite Screen -->
+      <div id="invite-screen" class="hidden">
+        <h1 class="glitch" data-text="ERROR 410: COLLEAGUE GONE">ERROR 410: COLLEAGUE GONE</h1>
+        
+        <div class="invite-card">
+          <p>> Resource 'Colleague' has been permanently removed from the server.</p>
+          <p>> A farewell protocol has been initiated.</p>
+          
+          <div class="details">
+            <p><strong>[DATE]</strong>: Friday, 28th Feb 2026</p>
+            <p><strong>[TIME]</strong>: 17:00:00 UTC+1</p>
+            <p><strong>[LOC]</strong>: The Local Bar, Amsterdam</p>
+          </div>
+
+          <form id="rsvp-form">
+            <h2 style="color: var(--accent-color); margin-bottom: 1rem;">// EXECUTE RSVP.js</h2>
+            
+            <div style="margin-bottom: 1rem;">
+              <label>> const name = </label>
+              <input type="text" id="name" required placeholder='"Your Name"'>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label>> const email = </label>
+              <input type="email" id="email" required placeholder='"email@example.com"'>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label>> let dietaryReqs = </label>
+              <input type="text" id="diet" placeholder='"None"'>
+            </div>
+
+            <button type="submit">COMMIT CHANGES</button>
+          </form>
+          <div id="rsvp-message" class="error-msg" style="color: var(--text-color)"></div>
+        </div>
+      </div>
+
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
