@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin // 410 Gone</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+        color: var(--text-color);
+      }
+      .admin-table th, .admin-table td {
+        border: 1px solid var(--text-color);
+        padding: 0.5rem;
+        text-align: left;
+      }
+      .admin-table th {
+        background: rgba(0, 255, 65, 0.1);
+      }
+      .count-box {
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px dashed var(--accent-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container">
+      
+      <!-- Admin Login -->
+      <div id="admin-login" class="terminal-window">
+        <h1 class="glitch" data-text="SUDO ACCESS">SUDO ACCESS</h1>
+        <p>> Please authenticate for root privileges.</p>
+        
+        <div class="input-line">
+          <span class="prompt">root@party:~$</span>
+          <input type="password" id="admin-pass" placeholder="Password..." autocomplete="off" autofocus>
+        </div>
+        <div id="admin-error" class="error-msg"></div>
+      </div>
+
+      <!-- Admin Dashboard -->
+      <div id="dashboard" class="hidden">
+        <h1 class="glitch" data-text="ROOT DASHBOARD">ROOT DASHBOARD</h1>
+        <p>> Fetching data from origin/rsvps...</p>
+
+        <div class="count-box">
+          <p>Total RSVPs: <span id="total-count">0</span></p>
+          <button id="refresh-btn" style="margin-top: 1rem; padding: 0.5rem 1rem;">git fetch</button>
+        </div>
+
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Diet</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="rsvp-list">
+            <!-- Rows go here -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <script type="module" src="/admin.js"></script>
+  </body>
+</html>

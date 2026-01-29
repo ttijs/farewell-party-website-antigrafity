@@ -1,10 +1,18 @@
 import { createClient } from '@supabase/supabase-js'
 
-// TODO: REPLACE THESE WITH YOUR OWN KEYS FROM SUPABASE DASHBOARD
-const SUPABASE_URL = 'https://your-project-url.supabase.co'
-const SUPABASE_KEY = 'your-anon-key'
+// Keys must start with VITE_ to be exposed to the client
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+// Safe initialization
+let supabase = null
+if (SUPABASE_URL && SUPABASE_KEY) {
+  try {
+    supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+  } catch (e) {
+    console.error('Supabase init failed:', e)
+  }
+}
 
 const ACCESS_CODE = 'git push --force' // The secret code
 
@@ -52,6 +60,13 @@ rsvpForm.addEventListener('submit', async (e) => {
 
   rsvpForm.querySelector('button').disabled = true
   rsvpForm.querySelector('button').textContent = 'PUSHING TO ORIGIN...'
+
+  if (!supabase) {
+    rsvpMessage.textContent = '> Error: Database not configured.'
+    rsvpForm.querySelector('button').disabled = false
+    rsvpForm.querySelector('button').textContent = 'TRY AGAIN'
+    return
+  }
 
   try {
     const { error } = await supabase
