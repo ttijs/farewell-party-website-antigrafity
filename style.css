@@ -58,11 +58,14 @@ body::before {
 .glitch {
   position: relative;
   color: var(--text-color);
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .glitch::before,
@@ -119,6 +122,12 @@ body::before {
   display: flex;
   align-items: center;
   margin-top: 1rem;
+}
+@media (max-width: 600px) {
+  .input-line {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 
 .prompt {
